@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\GuruController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts/master');
 });
+Route::get('guru', [GuruController::class, 'index'])->name('guru');
+Route::get('guru/profil/{id}', [GuruController::class, 'profil']);
