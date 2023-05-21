@@ -1,0 +1,225 @@
+SESI 2
+• •
+TEMPLATING
+MEMBANGUN DATABASE
+
+  
+
+
+Templating I
+• Template merupakan file yang  dibuat dengan tata letak  (layout) keseluruhan atau cetak  biru sebuah aplikasi
+1. Bukalah project laravel anda  pada editor kemudian buatlah  folder baru dengan nama  folder assets didalam folder  public.
+2. Buka file AdminLTE-2.4.5 yang  telah di ekstraksi, kemudian  copilah folder
+bower_components dan folder dist lalu pindahkan kedalam folder assets pada project laravel yang telah anda buat sebelumnya
+
+  
+
+
+Templating 2
+• Selanjutnya didalam folder  resources/views, buatlah  folder baru dengan nama  layouts dan didalam
+layouts buatlah file baru dengan nama
+master.blade.php.
+• Selanjutnya silahkan anda  buka file blank.html yang  terdapat didalam folder  AdminLTE/page/example  dan kopi semua
+sourcecode didalamnya lalu salinlah pada file master.blade.php.
+
+  
+Templating 3
+• Kemudian ubahlah routing  pada file web.php dan  arahkan ke url template  yang baru kita buat
+• Silahkan anda coba  jalankan pada browser  anda dengan url
+127.0.0.1:8000, dan perhatikan yang terjadi
+• Hal diatas terjadi karena
+kita belum mengintegrasikan komponen dari bowercomponent dan dist.
+
+  
+Templating 4
+• Buka pada file
+master.blade.php, ubahlah link dari semua bowercomponent dan dist ke folder assets
+• ubahlah link dari semua  Javascripts ke folder  assets.
+• Silahkan jalankan kembali  browser anda dengan url  127.0.0.1:8000. dan
+perhatikan perubahannya.
+
+  
+Templating 5
+• Buatlah sebuah folder baru didalam folderlayouts dengan  nama partials.
+• Didalam folder partials buatlah file dengan nama  _header.blade.php, potonglah sourcecode pada file  master.blade.php (bagian header pada baris ke 3-30),  dibagian head dan pindahkan kedalam file  _header.blade.php
+• integrasikanlah file _header.blade.php yang baru saja  anda buat dengan menggunakan fungsi include didalam  file master.blade.php
+
+  
+
+
+Templating 6
+• Buatlah beberapa  file lagi didalam  folder partials, yaitu  file
+_navbar.blade.php, _sidebar.blade.php, _footer.blade.php, _script.blade.php, yang berfungsi untuk memisahkan bagian-bagian dari file
+master.blade.php (perhatikan gambar dibawah ini dan lakukan langkah yang sama seperti pada file
+_head.blade.php)
+
+  
+
+
+Templating 7
+• coba jalankan  pada browser  anda, dan
+arahkan url ke alamat
+http://127.0.0.1:80 00
+• Jika tidak terjadi  kesalahan maka  tampilan akan  sama seperti
+sebelum file master.blade.php di ubah menjadi beberapa bagian
+
+  
+Membuat Database
+• Buka server engine  PHP MyAdmint
+pada browser
+• Buatlah sebuah  database baru  dengan nama  sia_laravel8
+• Koneksikan
+database yang telah anda buat kedalam project laravel anda melalui file .Env
+
+  
+Membuat Tabel Database
+• Buka terminal pada
+VS code studio, Terminal/New Terminal dan pastikan direktori yang aktif pada folder project laravel anda
+• Pada terminal,  jalankan perintah  php artisan
+make:migration create_guru_table untuk membuat sebuah tabel dengan nama table guru
+
+  
+Membuat Struktur Tabel
+• Bukalah file table guru
+yang telah kita buat berada di dalam folder
+database/migrations,
+• Buatlah sebuah struktur  tabel guru seperti pada  gambar
+• Jalankan perintah php  artisan migrate pada  terminal untuk
+melakukan migrasi tabel guru.
+• Setelah itu silahkan
+anda cek pada database di php
+myadmin apakah telah tercipta tabel guru, sesuai dengan struktur yang kita buat
+
+  
+Membuat dummy data
+• em u t Mo el
+• Untuk membuat model,
+buka terminal kemudian jalankan perintah php artisan make:model Guru
+• Kemudian buka file  model Guru tersebut  yang berda di folder  app/Models. Kemudian  buatlah sourcecode  seperti pada gambar
+• Buatlah sebuah factory  yang akan digunakan  untuk memasukan data  dummy ke tabel,
+dengan menjalankan perintah php artisan make:factory GuruFactory melalui Terminal
+
+  
+Membuat dummy data
+• Kemudian buka file
+Factory GuruFactory
+tersebut yang berda di folder Databse/factories. Kemudian buatlah sourcecode seperti pada gambar, pastikan anda mengimpor model Guru
+• Pada terminal  jalankan perintah  php artisan db:seed  melalui
+
+  
+Membuat dummy data
+• buka terminal  kemudian jalankan  perintah php artisan  db:seed. Untuk
+memasukan dummy data
+• Silahkan cek pada  table guru yang  ada didalam
+database, dan pastikan dummy data sudah tercipta sebanyak 10 data
+
+  
+
+
+SESI3 FUNGSI CRUD
+(Create, Read, Update & Delete)
+• Buka file model  Guru.php,
+kemudian buatlah sebuah fungsi
+allData, perhatikan pada gambar
+• Buatlah sebuah  controller dengan  nama
+GuruController. Pada terminal jalankan php artisan
+make:controller GuruController
+• Buka file
+GuruController.php, kemudian buatlah sebuah fungsi construct dan fungsi index, perhatikan pada gambar
+• Bukalah file
+web.php Bukalah file, kemudiang buatlah routing baru dengan nama route::get (‘guru’)
+• Didalam folder  resources/views,  Buatlah sebuah
+folder baru dengan nama folder guru
+• Lalu didalm folder
+guru tersebut, buatlah sebuah file baru dengan nama index.blade.php
+• Pastikan anda sudah  membuat juga folder  images didalam
+folder public sebagai tempat untuk menyimpan gambar/photo
+• Buka file  index.blad  e.php,
+kemudian buatlah sebuah tabel yang berfungsi menampu ng data guru.
+• Ketikan
+source code di bawah ini
+• Silahkan
+jalankan server dengan perintah php artisan serve., lalu buka file browser anda dan silahkan coba anda akses url http://127.0.0.1:8 000/guru
+Guru.php, lalu buatlah fungsi baru dengan nama detailData, masukan source code seperti pada gambar di samping
+• Bukalah file
+GuruController.php, lalu buatlah fungsi baru dengan nama profil, masukan source code seperti pada gambar di samping
+• Bukalah file
+index.blade.php, kemudian pada tombol detail, arahkan ke route guru/profil
+• Buatlah route baru dengan  nama guru/profil/{id}
+didalam file web.php
+• Silahkan jalankan
+server dengan perintah php artisan serve., lalu buka browser anda dan akses url
+http://127.0.0.1:8000 /guru/ dan klik tombol detail guru
+• Didalam folder  resource/view/guru  buatlah file baru  dengan nama
+profil.blade.php, kemudian masukan sourcecode
+• Silahkan buka browser anda dan akses kembali url  http://127.0.0.1:8000/guru, lalu klik tombol detail guru
+• B
+dengan nama guru/create pada file web.php
+• pada file
+index.blade.php, pada bagian tombol tambah guru, arahkan link kepda route guru/create
+• pada file
+GuruController, buatlah sebuah fungsi create yang akan mengarahkan kepada tampilan/ view ke halaman guru/create
+• lalu buatlah sebuah file  baru didalam folder  resources/views/guru  dengan nama file
+create.blade.php
+• Bukalah file  create.blade.  phpYang
+baru saja anda buat, kemudian masukan sourcecode dibawah ini
+• Silahkan jalankan server dengan perintah php artisan serve., lalu buka file  browser anda dan silahkan coba anda akses url http://127.0.0.1:8000/guru  dan klik tombol tambah guru, untuk melihat tampilan halaman create
+• pada file  create.blade.ph  p ubahlah
+fungsi text anchor menjadi tipe button dan pindahkan posisinya sehingga berada didalam tag form
+• buat routing  dengan nama  guru/insert
+baru pada file web.php
+• Pada file model  Guru buatlah  fungsi
+tambahData
+• Pada file  GuruController  buatlah fungsi  insert yang  akan berisi  validasi data  input
+• pada file create.blade.php lakukan modifikasi pada text  input, lakukan dan sesuaikan dengan nama field setiap  komponen., perhatikan gambar di bawah ini
+• Silahkan jalankan
+server dengan perintah php artisan serve., lalu buka file browser anda dan silahkan coba anda akses url
+http://127.0.0.1:8000/ guru/create
+• lalu coba inputkan  data baru dimana  jika input tdk boleh  kosong dan sesuai  dengan aturan yang  sudah ditentukan  maka form akan  menampilkan error  message
+• Jika input sudah  sesuai maka data  akan tersimpan dan  meridirect ke
+halaman guru
+• Selanjutnya kita  akan membuat  session jika data  berhasil di simpan
+• Bukalah file
+index.blade.php tambahkan fungsi session pada bagian di atas header box
+• lalu coba
+inputkan data guru kembali,
+dimana saat data tersimpan maka saat redirect di halaman akan tampil pesan data berhasil tersimpan
+• Bua
+dengan nama guru/edit pada file web.php
+• pada file
+index.blade.php, pada bagian tombol tambah guru, arahkan link kepda route guru/edit
+• pada file
+GuruController, buatlah sebuah fungsi edit dengan parameter id, dan akan mengarahkan kepada tampilan/ view ke halaman guru/edit
+• lalu buatlah sebuah file  baru didalam folder  resources/views/guru  dengan nama file
+edit.blade.php
+• Bukalah file create.blade.php dan copilah semua  source code pada file tersebut, kemudian salin  kedalam file edit.blade.php
+• Modifikasilah file edit.blade.php tersebut sehingga sesuai
+dengan kebutuhan, perhatikan gambar dibawah ini
+• Modifikasilah pada value setiap komponen form sesuai dengan  nama field tabel guru, terkecuali untuk komponen form photo  yang berbeda modifikasinya. perhatikan gambar dibawah ini
+• Silahkan
+jalankan server dengan perintah php artisan serve., lalu akses halaman guru dan silahkan coba fungsi tombol edit data, maka halaman edit akan menampilkan data guru berdasarkan id
+• Silahkan jalankan  server dengan  perintah php
+artisan serve., lalu akses halaman guru dan silahkan coba fungsi tombol edit data, maka halaman edit akan menampilkan data guru berdasarkan id
+• Selanjutnya kita  akan membuat  fungsi update  data pada button  save
+• Buatlah Routing  baru dengan  nama
+guru/update/{id} pada file web.php
+• bukalah file model  Guru.php, lalu
+buatlah sebuah fungsi updateData
+• pada file
+GuruController, buatlah sebuah fungsi updateData dimana fungsi akan mengupdate semua data guru kecuali id guru
+• Sila
+kemudian save data, kemudian perhatikan apakah fungsi update sudah berfungsi dengan baik
+• Buka file
+index.blade.php, kemudian
+ubahlah pada bagian text
+anchor delete menjadi button
+• Masih pada file  index.blade.php,  tambahkan
+sourcecode form modal dialog tepat dibagian @endsection. Perhatikan gambar disamping
+• Buatlah routing
+baru di file web.php dengan nama guru/delete/{id}
+• Buka file
+GuruController.p hp, kemudian buatlah fungsi delete dengan parameter id
+Menampilkan Delete Data
+• Silahkan
+jalankan server dengan perintah php artisan serve., dan silahkan coba jalankan fungsi delete
+

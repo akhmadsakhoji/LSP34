@@ -7,11 +7,11 @@
             <h3 class="box-title"><i class="fa fa-database">Data Guru</i></h3>
 
             @if (session('pesan'))
-            <div class="alert alert-success alert-dismissible">
-                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                <h4><i class="fa fa-check"></i>Success</h4>
-                {{session('pesan')}}.
-            </div>
+                <div class="alert alert-success alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                    <h4><i class="fa fa-check"></i>Success</h4>
+                    {{ session('pesan') }}.
+                </div>
             @endif
 
             <div class="box-header">
@@ -48,9 +48,12 @@
                                             <td>{{ $data->alamat }}</td>
                                             <td><img src="{{ url('images/' . $data->photo) }}" width="50"></td>
                                             <td>
-                                                <a href="/guru/profil/{{$data->id}}" class="btn btn-success btn-sm">Detail</a>
-                                                <a href="#" class="btn btn-primary btn-sm">Edit</a>
-                                                <button type="submit" name="submit"
+                                                <a href="/guru/profil/{{ $data->id }}"
+                                                    class="btn btn-success btn-sm">Detail</a>
+                                                <a href="/guru/edit/{{ $data->id }}"
+                                                    class="btn btn-primary btn-sm">Edit</a>
+                                                <button type="submit" data-toggle="modal"
+                                                    data-target="#delete{{ $data->id }}"
                                                     class="btn btn-danger btn-sm">Delete</button>
                                             </td>
                                         </tr>
@@ -64,11 +67,33 @@
             </div>
         </div>
     </div>
+    {{-- Modal dialog hapus --}}
+    @foreach ($guru as $data)
+        <div class="modal modal-danger fade" id="delete{{ $data->id }}">
+            <div class="modal-dialog modal-sm">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title">Form Konfirmasi</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Anda Yakin Ingin Menghapus DATA GURU yang bernama {{ $data->nama }}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-outline pull-left" type="button" data-dismiss="modal">Batal</button>
+                        <a href="/guru/delete/{{ $data->id }}" class="btn btn-outline">Hapus</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endforeach
 @endsection
 @push('scripts')
-<script>
-    $(function(){
-        $('#guru-table').DataTable()
-    })
-</script>
+    <script>
+        $(function() {
+            $('#guru-table').DataTable()
+        })
+    </script>
 @endpush

@@ -24,6 +24,10 @@ class Guru extends Model
     }
 
     public function tambahData($data){
-        DB::table('guru')->insert($data);
+        return DB::table('guru')->insert($data);
+    }
+
+    public function updateData($id, $data){
+        return DB::table('guru')->where('id', $id)->update($data);
     }
 }
