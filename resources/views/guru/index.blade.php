@@ -1,11 +1,21 @@
 @extends('layouts.master')
+@section('title', 'Data Guru')
 @section('content')
 
     <div class="col-xs-12">
         <div class="box">
             <h3 class="box-title"><i class="fa fa-database">Data Guru</i></h3>
+
+            @if (session('pesan'))
+            <div class="alert alert-success alert-dismissible">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                <h4><i class="fa fa-check"></i>Success</h4>
+                {{session('pesan')}}.
+            </div>
+            @endif
+
             <div class="box-header">
-                <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus-square">Tambah Guru</i></a>
+                <a href="guru/create" class="btn btn-primary btn-sm"><i class="fa fa-plus-square">Tambah Guru</i></a>
             </div>
             {{-- / .box-header --}}
             <div class="box-body">

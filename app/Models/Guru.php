@@ -20,6 +20,10 @@ class Guru extends Model
     }
 
     public function detailData($id){
-        return DB::table('guru')->where('id', '$id')->first();
+        return DB::table('guru')->where('id', $id)->first();
+    }
+
+    public function tambahData($data){
+        DB::table('guru')->insert($data);
     }
 }
